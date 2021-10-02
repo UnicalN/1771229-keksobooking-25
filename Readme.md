@@ -1,6 +1,6 @@
 # Личный проект «Кексобукинг»
 
-* Студент: [Gleb Limanskiy](https://htmlacademy.ru/profile/id1771229).
+* Студент: [Gleb Limanskiy](https://up.htmlacademy.ru/javascript/24/user/1771229).
 * Наставник: [Александр Григорьев](https://htmlacademy.ru/profile/fuckhtml). 
 
 ---
