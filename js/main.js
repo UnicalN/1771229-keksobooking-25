@@ -1,4 +1,4 @@
-function GetRandomInteger(min, max)
+function getRandomInteger(min, max)
 {
   if (min>max)
   {
@@ -8,7 +8,7 @@ function GetRandomInteger(min, max)
   return randomInteger;
 }
 
-function GetRandomFloat(min,max)
+function getRandomFloat(min,max)
 {
   if (min>max)
   {
@@ -18,5 +18,5 @@ function GetRandomFloat(min,max)
   return randomFloat;
 }
 
-GetRandomInteger(100,110);
-GetRandomFloat(1.2, 1.3);
+getRandomInteger(100,110);
+getRandomFloat(1.2, 1.3);
