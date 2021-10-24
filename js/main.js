@@ -90,9 +90,9 @@ function generateAvatar()
   let random=getRandomInteger(1,10);
   if (random<10)
   {
-    random=('0'+ random);
+    random=(`0${random}`);
   }
-  return('img/avatars/user'+ random +'.png');
+  return(`img/avatars/user${{ random }}.png`);
 }
 
 function generateTitle()
@@ -143,10 +143,10 @@ function generateDescription()
 
 function generateAuthor()
 {
-genereatedAuthor =
+  let genereatedAuthor =
   {
-    avatar: generateAvatar()
-  }
+    avatar: generateAvatar(),
+  };
 return genereatedAuthor;
 }
 function generateLocation()
@@ -154,7 +154,7 @@ function generateLocation()
   generatedLocation = 
   {
   lat: generateLat(),
-  lng: generateLng()
+  lng: generateLng(),
   }
   return generatedLocation;
 }
@@ -171,7 +171,7 @@ function generateOffer()
   checkout: generateCheckin(),
   features: generateFeatures(),
   description: generateDescription(),
-  photos: generatePhotos()
+  photos: generatePhotos(),
   }
   return generatedOffer;
 } 
@@ -181,7 +181,7 @@ function generateOfferSummary()
   let offerSummary = {
     location: generateLocation(),
     author: generateAuthor(),
-    offer: generateOffer()
+    offer: generateOffer(),
   }
   offerSummary.offer.address = (offerSummary.location.lat + ', ' + offerSummary.location.lng);
   return offerSummary;
