@@ -1,4 +1,4 @@
-AMOUNT_OF_OFFERS = 10;
+const AMOUNT_OF_OFFERS = 10;
 
 const SAMPLE =
 {
@@ -28,14 +28,14 @@ const SAMPLE =
   ],
   FEATURES: [
     'wifi', 
-    'dishwasher', 
-    'parking', 
-    'washer', 
-    'elevator', 
+    'dishwasher',
+    'parking',
+    'washer',
+    'elevator',
     'conditioner',
   ],
   PHOTOS: [
-    'https://assets.htmlacademy.ru/content/intensive/javascript-1/keksobooking/duonguyen-8LrGtIxxa4w.jpg', 
+    'https://assets.htmlacademy.ru/content/intensive/javascript-1/keksobooking/duonguyen-8LrGtIxxa4w.jpg',
     'https://assets.htmlacademy.ru/content/intensive/javascript-1/keksobooking/brandon-hoogenboom-SNxQGWxZQi0.jpg',
     'https://assets.htmlacademy.ru/content/intensive/javascript-1/keksobooking/claire-rendall-b6kAwr1i0Iw.jpg',
   ],
@@ -47,8 +47,8 @@ const SAMPLE =
     'Расположение в самом центре',
     'Уединенное место вдали от суеты',
     'Мы открыты для гостей с 1984 года',
-  ]
-}
+  ],
+};
 
 function getRandomInteger(min, max)
 {
