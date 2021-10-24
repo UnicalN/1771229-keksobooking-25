@@ -107,20 +107,20 @@ function generateType()
 
 function generateCheckin()
 {
-  return SAMPLE.CHECKINS[getRandomInteger(0, SAMPLE.CHECKINS.length-1)]
+  return SAMPLE.CHECKINS[getRandomInteger(0, SAMPLE.CHECKINS.length-1)];
 }
 
 function generateFeatures()
 {
   let featuresArray = [];
-  for (i=0; i<SAMPLE.FEATURES.length; i++)
+  for (let i=0; i<SAMPLE.FEATURES.length; i++)
   {
     if (getRandomInteger(0,1))
     {
       featuresArray.push(SAMPLE.FEATURES[i]);
     }
   }
-  return featuresArray
+  return featuresArray;
 }
 
 function generatePhotos()
@@ -133,12 +133,12 @@ function generatePhotos()
       photosArray.push(SAMPLE.PHOTOS[i]);
     }
   }
-  return photosArray
+  return photosArray;
 }
 
 function generateDescription()
 {
-    return SAMPLE.DESCRIPTIONS[getRandomInteger(0, SAMPLE.DESCRIPTIONS.length-1)]
+    return SAMPLE.DESCRIPTIONS[getRandomInteger(0, SAMPLE.DESCRIPTIONS.length-1)];
 }
 
 function generateAuthor()
@@ -147,7 +147,7 @@ genereatedAuthor =
   {
     avatar: generateAvatar()
   }
-return genereatedAuthor
+return genereatedAuthor;
 }
 function generateLocation()
 {
@@ -156,7 +156,7 @@ function generateLocation()
   lat: generateLat(),
   lng: generateLng()
   }
-  return generatedLocation
+  return generatedLocation;
 }
 function generateOffer()
 {
@@ -173,7 +173,7 @@ function generateOffer()
   description: generateDescription(),
   photos: generatePhotos()
   }
-  return generatedOffer
+  return generatedOffer;
 } 
 
 function generateOfferSummary()
@@ -184,7 +184,7 @@ function generateOfferSummary()
     offer: generateOffer()
   }
   offerSummary.offer.address = (offerSummary.location.lat + ', ' + offerSummary.location.lng);
-  return offerSummary
+  return offerSummary;
 }
 
 let allOffersData = Array.from({length: AMOUNT_OF_OFFERS}, generateOfferSummary);
