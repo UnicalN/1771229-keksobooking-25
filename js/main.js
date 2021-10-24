@@ -12,14 +12,14 @@ const SAMPLE =
     'AB Residence',
     'Soca',
     'Lake',
-    'Mercury'
+    'Mercury',
   ],
   TYPES: [
     'palace',
     'flat',
     'house',
     'bungalow',
-    'hotel'
+    'hotel',
   ],
   CHECKINS: [
     '12:00',
@@ -32,7 +32,7 @@ const SAMPLE =
     'parking', 
     'washer', 
     'elevator', 
-    'conditioner'
+    'conditioner',
   ],
   PHOTOS: [
     'https://assets.htmlacademy.ru/content/intensive/javascript-1/keksobooking/duonguyen-8LrGtIxxa4w.jpg', 
