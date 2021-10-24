@@ -3,50 +3,50 @@ AMOUNT_OF_OFFERS = 10;
 const SAMPLE =
 {
   TITLES: [
-  'Ibes',
-  'de la Paix',
-  'Rudninkai City',
-  'Kamelot',
-  'Kreuz',
-  'HN',
-  'AB Residence',
-  'Soca',
-  'Lake',
-  'Mercury'
+    'Ibes',
+    'de la Paix',
+    'Rudninkai City',
+    'Kamelot',
+    'Kreuz',
+    'HN',
+    'AB Residence',
+    'Soca',
+    'Lake',
+    'Mercury'
   ],
   TYPES: [
-  'palace',
-  'flat',
-  'house',
-  'bungalow',
-  'hotel'
+    'palace',
+    'flat',
+    'house',
+    'bungalow',
+    'hotel'
   ],
   CHECKINS: [
-  '12:00',
-  '13:00',
-  '14:00',
+    '12:00',
+    '13:00',
+    '14:00',
   ],
   FEATURES: [
-  'wifi', 
-  'dishwasher', 
-  'parking', 
-  'washer', 
-  'elevator', 
-  'conditioner'
+    'wifi', 
+    'dishwasher', 
+    'parking', 
+    'washer', 
+    'elevator', 
+    'conditioner'
   ],
   PHOTOS: [
-  'https://assets.htmlacademy.ru/content/intensive/javascript-1/keksobooking/duonguyen-8LrGtIxxa4w.jpg', 
-  'https://assets.htmlacademy.ru/content/intensive/javascript-1/keksobooking/brandon-hoogenboom-SNxQGWxZQi0.jpg',
-  'https://assets.htmlacademy.ru/content/intensive/javascript-1/keksobooking/claire-rendall-b6kAwr1i0Iw.jpg'
+    'https://assets.htmlacademy.ru/content/intensive/javascript-1/keksobooking/duonguyen-8LrGtIxxa4w.jpg', 
+    'https://assets.htmlacademy.ru/content/intensive/javascript-1/keksobooking/brandon-hoogenboom-SNxQGWxZQi0.jpg',
+    'https://assets.htmlacademy.ru/content/intensive/javascript-1/keksobooking/claire-rendall-b6kAwr1i0Iw.jpg'
   ],
   DESCRIPTIONS: [
-  'Отличный вид из окна',
-  'Вкуснейшие завтраки',
-  'Проведите свои выходные вместе с нами!',
-  'Заселяем без ПЦР теста!',
-  'Расположение в самом центре',
-  'Уединенное место вдали от суеты',
-  'Мы открыты для гостей с 1984 года',
+    'Отличный вид из окна',
+    'Вкуснейшие завтраки',
+    'Проведите свои выходные вместе с нами!',
+    'Заселяем без ПЦР теста!',
+    'Расположение в самом центре',
+    'Уединенное место вдали от суеты',
+    'Мы открыты для гостей с 1984 года',
   ]
 }
 
