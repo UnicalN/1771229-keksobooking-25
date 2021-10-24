@@ -126,7 +126,7 @@ function generateFeatures()
 function generatePhotos()
 {
   let photosArray = [];
-  for (i=0; i<SAMPLE.PHOTOS.length; i++)
+  for (let i=0; i<SAMPLE.PHOTOS.length; i++)
   {
     if (getRandomInteger(0,1))
     {
@@ -138,7 +138,7 @@ function generatePhotos()
 
 function generateDescription()
 {
-    return SAMPLE.DESCRIPTIONS[getRandomInteger(0, SAMPLE.DESCRIPTIONS.length-1)];
+  return SAMPLE.DESCRIPTIONS[getRandomInteger(0, SAMPLE.DESCRIPTIONS.length-1)];
 }
 
 function generateAuthor()
