@@ -112,12 +112,12 @@ function generateCheckin()
 
 function generateFeatures()
 {
-  let featuresArray = [];
-  for (let i=0; i<SAMPLE.FEATURES.length; i++)
+  const featuresArray = [];
+  for (let ii=0; ii<SAMPLE.FEATURES.length; ii++)
   {
     if (getRandomInteger(0,1))
     {
-      featuresArray.push(SAMPLE.FEATURES[i]);
+      featuresArray.push(SAMPLE.FEATURES[ii]);
     }
   }
   return featuresArray;
@@ -125,12 +125,12 @@ function generateFeatures()
 
 function generatePhotos()
 {
-  let photosArray = [];
-  for (let i=0; i<SAMPLE.PHOTOS.length; i++)
+  const photosArray = [];
+  for (let ii=0; ii<SAMPLE.PHOTOS.length; ii++)
   {
     if (getRandomInteger(0,1))
     {
-      photosArray.push(SAMPLE.PHOTOS[i]);
+      photosArray.push(SAMPLE.PHOTOS[ii]);
     }
   }
   return photosArray;
@@ -143,50 +143,50 @@ function generateDescription()
 
 function generateAuthor()
 {
-  let genereatedAuthor =
+  const genereatedAuthor =
   {
     avatar: generateAvatar(),
   };
-return genereatedAuthor;
+  return genereatedAuthor;
 }
 function generateLocation()
 {
-  generatedLocation = 
+  const generatedLocation =
   {
-  lat: generateLat(),
-  lng: generateLng(),
-  }
+    lat: generateLat(),
+    lng: generateLng(),
+  };
   return generatedLocation;
 }
 function generateOffer()
 {
-  generatedOffer = //Не генерирует адрес
+  const generatedOffer = //Не генерирует адрес
   {
-  title: generateTitle(),
-  price: getRandomInteger(1000, 50000),
-  type: generateType(),
-  rooms: getRandomInteger(1, 5),
-  guests: getRandomInteger(1, 8),
-  checkin: generateCheckin(),
-  checkout: generateCheckin(),
-  features: generateFeatures(),
-  description: generateDescription(),
-  photos: generatePhotos(),
-  }
+    title: generateTitle(),
+    price: getRandomInteger(1000, 50000),
+    type: generateType(),
+    rooms: getRandomInteger(1, 5),
+    guests: getRandomInteger(1, 8),
+    checkin: generateCheckin(),
+    checkout: generateCheckin(),
+    features: generateFeatures(),
+    description: generateDescription(),
+    photos: generatePhotos(),
+  };
   return generatedOffer;
-} 
+}
 
 function generateOfferSummary()
 {
-  let offerSummary = {
+  const offerSummary = {
     location: generateLocation(),
     author: generateAuthor(),
     offer: generateOffer(),
-  }
-  offerSummary.offer.address = (offerSummary.location.lat + ', ' + offerSummary.location.lng);
+  };
+  offerSummary.offer.address = (`${offerSummary.location.lat  }, ${  offerSummary.location.lng}`);
   return offerSummary;
 }
 
-let allOffersData = Array.from({length: AMOUNT_OF_OFFERS}, generateOfferSummary);
+const allOffersData = Array.from({length: AMOUNT_OF_OFFERS}, generateOfferSummary);
 
-console.log(allOffersData);
+allOffersData; //Чтобы eslint не ругался
