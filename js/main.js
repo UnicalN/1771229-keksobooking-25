@@ -27,7 +27,7 @@ const SAMPLE =
     '14:00',
   ],
   FEATURES: [
-    'wifi', 
+    'wifi',
     'dishwasher',
     'parking',
     'washer',
@@ -77,37 +77,37 @@ function getRandomFloat(min,max,digits)
 
 function generateLat()
 {
-  return getRandomFloat(35.65, 35.7, 5)
+  return getRandomFloat(35.65, 35.7, 5);
 }
 
 function generateLng()
 {
-  return getRandomFloat(139.7, 139.8, 5)
+  return getRandomFloat(139.7, 139.8, 5);
 }
 
 function generateAvatar()
 {
-  let random=getRandomInteger(1,10)
+  let random=getRandomInteger(1,10);
   if (random<10)
   {
     random=('0'+ random);
   }
-  return('img/avatars/user'+ random +'.png')
+  return('img/avatars/user'+ random +'.png');
 }
 
 function generateTitle()
 {
-  return SAMPLE.TITLES[getRandomInteger(0, SAMPLE.TITLES.length-1)]
+  return SAMPLE.TITLES[getRandomInteger(0, SAMPLE.TITLES.length-1)];
 }
 
 function generateType()
 {
-  return SAMPLE.TYPES[getRandomInteger(0, SAMPLE.TYPES.length-1)]
+  return SAMPLE.TYPES[getRandomInteger(0, SAMPLE.TYPES.length-1)];
 }
 
 function generateCheckin()
 {
-   return SAMPLE.CHECKINS[getRandomInteger(0, SAMPLE.CHECKINS.length-1)]
+  return SAMPLE.CHECKINS[getRandomInteger(0, SAMPLE.CHECKINS.length-1)]
 }
 
 function generateFeatures()
