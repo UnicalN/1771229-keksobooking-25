@@ -1,5 +1,5 @@
-import {getRandomInteger} from './modules/getRandom.js';
-import {getRandomFloat} from './modules/getRandom.js';
+import {getRandomInteger} from './getRandom.js';
+import {getRandomFloat} from './getRandom.js';
 
 const AMOUNT_OF_OFFERS = 10;
 const SAMPLE =
@@ -164,4 +164,5 @@ function generateOfferSummary()
   return generatedOfferSummary;
 }
 
-export const offerSummary = Array.from({length: AMOUNT_OF_OFFERS}, generateOfferSummary);
+const offerSummary = Array.from({length: AMOUNT_OF_OFFERS}, generateOfferSummary);
+export {offerSummary};
