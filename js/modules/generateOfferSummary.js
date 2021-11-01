@@ -166,3 +166,4 @@ function generateOfferSummary()
 
 const offerSummary = Array.from({length: AMOUNT_OF_OFFERS}, generateOfferSummary);
 export {offerSummary};
+

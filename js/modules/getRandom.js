@@ -23,3 +23,4 @@ function getRandomFloat(min,max,digits)
   return randomFloat;
 }
 export {getRandomFloat, getRandomInteger};
+
