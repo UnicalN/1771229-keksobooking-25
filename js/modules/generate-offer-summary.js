@@ -1,7 +1,7 @@
 import {getRandomInteger} from './get-random.js';
 import {getRandomFloat} from './get-random.js';
 
-const AMOUNT_OF_OFFERS = 10;
+//const AMOUNT_OF_OFFERS = 10;
 const SAMPLE =
 {
   TITLES: [
@@ -69,7 +69,7 @@ function generateAvatar()
   {
     random=(`0${random}`);
   }
-  return(`img/avatars/user${{ random }}.png`);
+  return(`img/avatars/user${random}.png`);
 }
 
 function generateTitle()
@@ -163,7 +163,4 @@ function generateOfferSummary()
   generatedOfferSummary.offer.address = (`${generatedOfferSummary.location.lat  }, ${  generatedOfferSummary.location.lng}`);
   return generatedOfferSummary;
 }
-
-const offerSummary = Array.from({length: AMOUNT_OF_OFFERS}, generateOfferSummary);
-export {offerSummary};
-
+export {generateOfferSummary};
