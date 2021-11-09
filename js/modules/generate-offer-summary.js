@@ -1,7 +1,6 @@
 import {getRandomInteger} from './get-random.js';
 import {getRandomFloat} from './get-random.js';
 
-//const AMOUNT_OF_OFFERS = 10;
 const SAMPLE =
 {
   TITLES: [
