@@ -1,5 +1,4 @@
-import {getRandomInteger} from './get-random.js';
-import {getRandomFloat} from './get-random.js';
+import {getRandomInteger, getRandomFloat} from './get-random.js';
 
 const SAMPLE =
 {
