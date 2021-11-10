@@ -10,19 +10,19 @@ const TYPE_MAP =
 
 function createOfferLayout(offerSummary)
 {
-  const CARD_CLONE = CARD.cloneNode(true);             //создание клона шаблона
+  const cardClone = CARD.cloneNode(true);             //создание клона шаблона
   const POPUP =
 {
-  title: CARD_CLONE.querySelector('.popup__title'),
-  address: CARD_CLONE.querySelector('.popup__text--address'),
-  price: CARD_CLONE.querySelector('.popup__text--price'),
-  type: CARD_CLONE.querySelector('.popup__type'),
-  capacity: CARD_CLONE.querySelector('.popup__text--capacity'),
-  time: CARD_CLONE.querySelector('.popup__text--time'),
-  features: CARD_CLONE.querySelector('.popup__features'),
-  description: CARD_CLONE.querySelector('.popup__description'),
-  photos: CARD_CLONE.querySelector('.popup__photos'),
-  avatar: CARD_CLONE.querySelector('.popup__avatar'),
+  title: cardClone.querySelector('.popup__title'),
+  address: cardClone.querySelector('.popup__text--address'),
+  price: cardClone.querySelector('.popup__text--price'),
+  type: cardClone.querySelector('.popup__type'),
+  capacity: cardClone.querySelector('.popup__text--capacity'),
+  time: cardClone.querySelector('.popup__text--time'),
+  features: cardClone.querySelector('.popup__features'),
+  description: cardClone.querySelector('.popup__description'),
+  photos: cardClone.querySelector('.popup__photos'),
+  avatar: cardClone.querySelector('.popup__avatar'),
 };
   POPUP.title.textContent = offerSummary.offer.title;   //заполнение DOM-элемента
   POPUP.address.textContent = offerSummary.offer.address;
@@ -53,7 +53,7 @@ function createOfferLayout(offerSummary)
       POPUP[element].classList.add('hidden'); //  блок в карточке скрывается.
     }
   }
-  return CARD_CLONE;
+  return cardClone;
 }
 
 export {createOfferLayout};
