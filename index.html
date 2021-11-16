@@ -6,6 +6,10 @@
   <link rel="stylesheet" href="css/style.css">
   <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
   <title>Кексобукинг</title>
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
+   integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A=="
+   crossorigin=""/>
+
 </head>
 <body>
 
@@ -16,10 +20,13 @@
     </div>
 
     <!-- Карта объявлений -->
-    <section class="map">
+    <section class="map" >
 
       <!-- Блок для вставки карты -->
-      <div class="map__canvas" id="map-canvas"></div>
+      <div class="map__canvas" id="map-canvas">
+        <div id="map" style="width: 1200px; height: 500px;"></div>
+      </div>
+
 
       <!-- Фильтрация объявлений -->
       <div class="map__filters-container">
@@ -91,7 +98,7 @@
         </fieldset>
         <fieldset class="ad-form__element ad-form__element--wide">
           <label class="ad-form__label" for="address">Адрес (координаты)</label>
-          <input id="address" name="address" type="text">
+          <input readonly id="address" name="address" type="text">
         </fieldset>
         <fieldset class="ad-form__element">
           <label class="ad-form__label" for="type">Тип жилья</label>
@@ -105,7 +112,7 @@
         </fieldset>
         <fieldset class="ad-form__element">
           <label class="ad-form__label" for="price">Цена за ночь, руб.</label>
-          <input required max=1000000 id="price" name="price" type="number" placeholder="5000">
+          <input required  min=1000 max=1000000 id="price" name="price" type="number" placeholder="1000">
         </fieldset>
         <fieldset class="ad-form__element ad-form__element--time">
           <label class="ad-form__label" for="timein">Время заезда и выезда</label>
@@ -123,18 +130,18 @@
         <fieldset class="ad-form__element">
           <label class="ad-form__label" for="room_number">Количество комнат</label>
           <select id="room_number" name="rooms">
-            <option value="1" selected>1 комната</option>
+            <option value="1">1 комната</option>
             <option value="2">2 комнаты</option>
-            <option value="3">3 комнаты</option>
+            <option value="3" selected>3 комнаты</option>
             <option value="100">100 комнат</option>
           </select>
         </fieldset>
         <fieldset class="ad-form__element">
           <label class="ad-form__label" for="capacity">Количество мест</label>
           <select id="capacity" name="capacity">
-            <option value="3" selected>для 3 гостей</option>
+            <option value="3" >для 3 гостей</option>
             <option value="2">для 2 гостей</option>
-            <option value="1">для 1 гостя</option>
+            <option value="1"selected>для 1 гостя</option>
             <option value="0">не для гостей</option>
           </select>
         </fieldset>
@@ -230,11 +237,14 @@
     </div>
   </template>
 
-</body>
-</html>
-
-<script type=module src="js/modules/get-random.js"></script>
-<script type=module src="js/modules/generate-offer-summary.js"></script>
+<script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"
+   integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA=="
+   crossorigin=""></script>
 <script type=module src="js/modules/generate-layout.js"></script>
 <script type=module src="js/modules/interaction-with-form.js"></script>
+<script type=module src="js/modules/server-interfaces.js"></script>
+<script type=module src="js/modules/map.js"></script>
 <script type=module src="js/main.js"></script>
+
+</body>
+</html>
