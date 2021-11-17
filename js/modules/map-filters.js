@@ -22,11 +22,11 @@ const isOfferSuitable = (offerSummary) =>(( isRoomsSuitable(offerSummary))&&
 (isCapacitySuitable(offerSummary))&&
 (isPriceSuitable(offerSummary)));
 
-filters.addEventListener;
+/*filters.addEventListener;
 const updatePins = () => {
 
 };
-
+*/
 export {
   isOfferSuitable
 };
