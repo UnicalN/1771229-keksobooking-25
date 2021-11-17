@@ -5,14 +5,14 @@ const typeFilter = filters.querySelector('#housing-type');
 const priceFilter = filters.querySelector('#housing-price');
 const roomsFilter =filters.querySelector('#housing-rooms');
 const guestsFilter = filters.querySelector('#housing-guests');
-//const features = filters.querySelector('#housing-features');
+const features = filters.querySelector('#housing-features');
 
 const LOW_PRICE_FILTER = 10000;
 const HIGH_PRICE_FILTER = 50000;
 
-const isRoomsSuitable = (offerSummary) =>    {(roomsFilter.value ==='any') ||(offerSummary.offer.rooms===roomsFilter.value);}
+const isRoomsSuitable = (offerSummary) =>    (roomsFilter.value ==='any') ||(`${offerSummary.offer.rooms}`===roomsFilter.value);
 const isTypeSuitable = (offerSummary) =>     (typeFilter.value ==='any')  ||(offerSummary.offer.type === typeFilter.value);
-const isCapacitySuitable = (offerSummary) => (guestsFilter.value ==='any')||(offerSummary.offer.type === guestsFilter.value);
+const isCapacitySuitable = (offerSummary) => (guestsFilter.value ==='any')||(`${offerSummary.offer.guests  }` === guestsFilter.value);
 const isPriceSuitable = (offerSummary) =>
   (priceFilter.value  ==='any')||
 (priceFilter.value === 'low' && offerSummary.offer.price <=LOW_PRICE_FILTER) ||
