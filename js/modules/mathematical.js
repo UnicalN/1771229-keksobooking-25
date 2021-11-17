@@ -21,10 +21,12 @@ const getRandomFloat = (min,max,digits) => {
   return randomFloat;
 };
 
+const implicate = (a, b) => !(a&&(!b));
 
 export {
   getRandomFloat,
   getRandomInteger,
-  roundTheNumber
+  roundTheNumber,
+  implicate
 };
 
