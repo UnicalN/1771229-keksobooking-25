@@ -3,7 +3,6 @@ const getData = (onSuccess) => {
     .then((response) => response.json())
     .then((offers) => {
       onSuccess(offers);
-      return offers;
     });
 };
 
@@ -28,5 +27,7 @@ const sendData = (onSuccess, onFail, body) => {
     });
 };
 
-export {getData};
-export {sendData};
+export {
+  getData,
+  sendData
+};

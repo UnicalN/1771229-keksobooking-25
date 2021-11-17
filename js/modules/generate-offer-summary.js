@@ -1,4 +1,4 @@
-import {getRandomInteger, getRandomFloat} from './get-random.js';
+import {getRandomInteger, getRandomFloat} from './mathematical.js';
 
 const SAMPLE =
 {
