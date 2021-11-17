@@ -14,8 +14,6 @@ const PIN_ICON_URL = 'https://assets.htmlacademy.ru/content/intensive/javascript
 const TILE_LAYER = 'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png';
 const TILE_LAYER_ATTR = '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors | Icons made by <a href="https://www.freepik.com" title="Freepik">Freepik</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a>';
 
-setAddressFromLatLng(DEFAULT_LAT, DEFAULT_LNG);
-//местоположение по умолчанию
 const map = L.map('map')
   .on('load', () => {
     enablePage();
@@ -37,11 +35,12 @@ L.tileLayer(
 const markerGroup = L.layerGroup().addTo(map);
 const selectLayer = L.layerGroup().addTo(map);
 
+
 //добавление главного пина
 const createMainMarker = () => {
   const lat =  DEFAULT_LAT;
   const lng =  DEFAULT_LNG;
-
+  setAddressFromLatLng(DEFAULT_LAT, DEFAULT_LNG);
   const icon = L.icon({
     iconUrl: MAIN_PIN_ICON_URL,
     iconSize: [SELECTOR_SIZE, SELECTOR_SIZE],
@@ -70,6 +69,7 @@ const createMainMarker = () => {
   );
 
 };
+
 
 //eventListener placeholder --------------------------<<<
 
@@ -100,7 +100,7 @@ const createMarker = (offerSummary) => {
 };
 
 //цикл отрисовки подходящих значков
-const createMarkers = (data) =>{
+const updatePins = (data) =>{
   markerGroup.clearLayers();
   let i=0;
   for (const offer of data) {
@@ -110,12 +110,17 @@ const createMarkers = (data) =>{
     }
     if (i>=MARKERS_AMOUNT){
       break;
-      // }
     }
   }
 };
 
 
 //доделать const createMarkersPlusEvtListener = (data)
+//filters.addEventListener;
 
-export {createMarkers, createMainMarker};
+
+export {
+  updatePins,
+  createMainMarker
+};
+

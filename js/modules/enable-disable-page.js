@@ -15,9 +15,9 @@ const disablePage = () => {
 };
 
 const enablePage = () => {
-  //console.log('page enable attempt');
-  adForm.classList.remove('ad-form--disabled');
-  //console.log(adForm.classList);
+  console.log('page enable attempt');
+  adForm.reset();
+  console.log(adForm.classList);
   mapFilters.classList.remove('ad-form--disabled');
   for (const child of adForm.children){
     child.removeAttribute('disabled');

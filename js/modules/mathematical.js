@@ -22,5 +22,9 @@ const getRandomFloat = (min,max,digits) => {
 };
 
 
-export {getRandomFloat, getRandomInteger, roundTheNumber};
+export {
+  getRandomFloat,
+  getRandomInteger,
+  roundTheNumber
+};
 

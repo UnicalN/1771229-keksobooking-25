@@ -1,8 +1,6 @@
 import {sendData} from './server-interfaces.js';
 import { roundTheNumber } from './mathematical.js';
-const ALERT_SHOW_TIME = 15;
 const LOCATION_DIGITS_IN_ADDRESS = 5;
-
 const adForm=document.querySelector('.ad-form');
 const MIN_PRICE_FOR_TYPE = {
   bungalow: 0,
@@ -17,26 +15,8 @@ const CAPACITY_FOR_ROOMS = {
   3: [1,2,3],
   100: [0],
 };
-const showAlert = (message) => {
-  const alertContainer = document.createElement('div');
-  alertContainer.style.zIndex = 100;
-  alertContainer.style.position = 'absolute';
-  alertContainer.style.left = 0;
-  alertContainer.style.top = 0;
-  alertContainer.style.right = 0;
-  alertContainer.style.padding = '10px 3px';
-  alertContainer.style.fontSize = '30px';
-  alertContainer.style.textAlign = 'center';
-  alertContainer.style.backgroundColor = 'red';
-  alertContainer.textContent = message;
 
-  document.body.append(alertContainer);
-
-  setTimeout(() => {
-    alertContainer.remove();
-  }, ALERT_SHOW_TIME);
-};
-
+const body = document.querySelector('body');
 //___________________________Валидация____________
 
 const roomAmount = adForm.querySelector('#room_number'); //Эти объявления лучше оставить в функции или вынести?
@@ -111,22 +91,54 @@ adForm.addEventListener('submit', () => {
 //
 });
 
+// Уведомления о (не)успешности отправки
+const  createSuccessPopup = () =>{
+  const successPopup = document.querySelector('#success').content.cloneNode(true);
+  body.appendChild(successPopup);
+  adForm.reset();
+  document.querySelector('map__filters').reset();
+  document.addEventListener('keydown', (evt) =>{
+    if (evt.keyCode === 27) {
+      successPopup.remove();
+    }
+  });
+  document.addEventListener('click', () =>{
+    successPopup.remove();
+  });
+};
 
-const setUserFormSubmit = (onSuccess) => {
+const  createErrorPopup = () =>{
+  const errorPopup = document.querySelector('#success').content.cloneNode(true);
+  body.appendChild(errorPopup);
+  document.addEventListener('keydown', (evt) =>{
+    if (evt.keyCode === 27) {
+      errorPopup.remove();
+    }
+  });
+  document.addEventListener('click', () =>{
+    errorPopup.remove();
+  });
+  const closeButton = errorPopup.querySelector('.error__button');
+  closeButton.addEventListener('click', () => {
+    errorPopup.remove();
+  });
+};
+
+const setUserFormSubmit = () => {
   adForm.addEventListener('submit', (evt) => {
     evt.preventDefault();
-
     sendData(
-      () => onSuccess(),
-      () => showAlert('Не удалось отправить форму. Попробуйте ещё раз'),
+      () => createSuccessPopup(),
+      () => createErrorPopup(),
       new FormData(evt.target),
     );
   });
 };
 
+
 export {
+  setAddressFromLatLng,
   validateOffer,
-  setUserFormSubmit,
-  setAddressFromLatLng
+  setUserFormSubmit
 };
 

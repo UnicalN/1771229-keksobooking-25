@@ -1,7 +1,6 @@
 import {getRandomInteger, getRandomFloat} from './mathematical.js';
 
-const SAMPLE =
-{
+const SAMPLE = {
   TITLES: [
     'Ibes',
     'de la Paix',
@@ -50,28 +49,23 @@ const SAMPLE =
   ],
 };
 
-const generateLat = function ()
-{
+const generateLat = function (){
   return getRandomFloat(35.65, 35.7, 5);
 };
 
-const generateLng = function ()
-{
+const generateLng = function (){
   return getRandomFloat(139.7, 139.8, 5);
 };
 
-const generateAvatar = function ()
-{
+const generateAvatar = function (){
   let random=getRandomInteger(1,10);
-  if (random<10)
-  {
+  if (random<10){
     random=(`0${random}`);
   }
   return(`img/avatars/user${random}.png`);
 };
 
-const generateTitle = function ()
-{
+const generateTitle = function (){
   return SAMPLE.TITLES[getRandomInteger(0, SAMPLE.TITLES.length-1)];
 };
 
@@ -81,10 +75,8 @@ const generateCheckin = () => SAMPLE.CHECKINS[getRandomInteger(0, SAMPLE.CHECKIN
 
 const generateFeatures = () => {
   const featuresArray = [];
-  for (let ii=0; ii<SAMPLE.FEATURES.length; ii++)
-  {
-    if (getRandomInteger(0,1))
-    {
+  for (let ii=0; ii<SAMPLE.FEATURES.length; ii++){
+    if (getRandomInteger(0,1)){
       featuresArray.push(SAMPLE.FEATURES[ii]);
     }
   }
@@ -93,10 +85,8 @@ const generateFeatures = () => {
 
 const generatePhotos = () => {
   const photosArray = [];
-  for (let ii=0; ii<SAMPLE.PHOTOS.length; ii++)
-  {
-    if (getRandomInteger(0,1))
-    {
+  for (let ii=0; ii<SAMPLE.PHOTOS.length; ii++) {
+    if (getRandomInteger(0,1)) {
       photosArray.push(SAMPLE.PHOTOS[ii]);
     }
   }
@@ -121,9 +111,8 @@ const generateLocation = ()=>{
   return generatedLocation;
 };
 const generateOffer =  () => {
-  const generatedOffer = //Не генерирует адрес (Адрес добавляется позднее на основе генерации location)
-  {
-    title: generateTitle(),
+  const generatedOffer = {
+    title: generateTitle(), //Не генерирует адрес (Адрес добавляется позднее на основе генерации location)
     price: getRandomInteger(1000, 50000),
     type: generateType(),
     rooms: getRandomInteger(1, 5),
@@ -150,5 +139,7 @@ const generateOfferSummary = () => {
 
 const generateOffersArray = (amount)=>Array.from({length: amount}, generateOfferSummary);
 
-export {generateOffersArray};
+export {
+  generateOffersArray
+};
 

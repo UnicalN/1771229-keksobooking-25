@@ -1,8 +1,9 @@
-const getData = (onSuccess) => {
+import {updatePins} from './map.js';
+const getData = () => {
   fetch('https://24.javascript.pages.academy/keksobooking/data')
     .then((response) => response.json())
     .then((offers) => {
-      onSuccess(offers);
+      updatePins(offers);
     });
 };
 
@@ -19,11 +20,11 @@ const sendData = (onSuccess, onFail, body) => {
       if (response.ok) {
         onSuccess();
       } else {
-        onFail('Не удалось отправить форму. Попробуйте ещё раз');
+        onFail();
       }
     })
     .catch(() => {
-      onFail('Не удалось отправить форму. Попробуйте ещё раз');
+      onFail();
     });
 };
 
