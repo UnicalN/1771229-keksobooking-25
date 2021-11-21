@@ -45,7 +45,6 @@ const setCapacityForRooms = (theRoomAmount, theCapacity)=>{
   for (const option of theCapacity.children){
     option.disabled = true;
     for (const possibleCapacity of CAPACITY_FOR_ROOMS[theRoomAmount.value]){
-      //вставка
       if ((option.value - possibleCapacity) === 0){
         option.removeAttribute('disabled');
       }
@@ -54,8 +53,8 @@ const setCapacityForRooms = (theRoomAmount, theCapacity)=>{
 };
 
 
-const setEqualTime = (userSetTime, syncronizedTime) => {
-  for (const child of syncronizedTime.children)
+const setEqualTime = (userSetTime, syncTime) => {
+  for (const child of syncTime.children)
   {
     child.selected = false;
     if (child.value === userSetTime.value)

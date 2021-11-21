@@ -70,9 +70,6 @@ const createMainMarker = () => {
 
 };
 
-
-//eventListener placeholder --------------------------<<<
-
 // функция отрисовки значков+попапов на слое карты
 const createMarker = (offerSummary) => {
   const lat = offerSummary.location.lat;
@@ -113,11 +110,6 @@ const updatePins = (data) =>{
     }
   }
 };
-
-
-//доделать const createMarkersPlusEvtListener = (data)
-//filters.addEventListener;
-
 
 export {
   updatePins,
