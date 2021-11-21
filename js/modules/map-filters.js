@@ -4,35 +4,35 @@ const LOW_PRICE_FILTER = 10000;
 const HIGH_PRICE_FILTER = 50000;
 
 
-const filters = document.querySelector('.map__filters');
-const typeFilter = filters.querySelector('#housing-type');
-const priceFilter = filters.querySelector('#housing-price');
-const roomsFilter =filters.querySelector('#housing-rooms');
-const guestsFilter = filters.querySelector('#housing-guests');
-const features =
+const filtersElement = document.querySelector('.map__filters');
+const typeFilterElement = filtersElement.querySelector('#housing-type');
+const priceFilterElement = filtersElement.querySelector('#housing-price');
+const roomsFilterElement =filtersElement.querySelector('#housing-rooms');
+const guestsFilterElement = filtersElement.querySelector('#housing-guests');
+const featuresElement =
 {
-  wifi : (filters.querySelector('#filter-wifi')),
-  dishwasher : (filters.querySelector('#filter-dishwasher')),
-  parking : (filters.querySelector('#filter-parking')),
-  washer : (filters.querySelector('#filter-washer')),
-  elevator : (filters.querySelector('#filter-elevator')),
-  conditioner : (filters.querySelector('#filter-conditioner')),
+  wifi : (filtersElement.querySelector('#filter-wifi')),
+  dishwasher : (filtersElement.querySelector('#filter-dishwasher')),
+  parking : (filtersElement.querySelector('#filter-parking')),
+  washer : (filtersElement.querySelector('#filter-washer')),
+  elevator : (filtersElement.querySelector('#filter-elevator')),
+  conditioner : (filtersElement.querySelector('#filter-conditioner')),
 };
 
-const isRoomsSuitable = (offerSummary) =>    (roomsFilter.value ==='any') ||(`${offerSummary.offer.rooms}`===roomsFilter.value);
-const isTypeSuitable = (offerSummary) =>     (typeFilter.value ==='any')  ||(offerSummary.offer.type === typeFilter.value);
-const isCapacitySuitable = (offerSummary) => (guestsFilter.value ==='any')||(`${offerSummary.offer.guests  }` === guestsFilter.value);
+const isRoomsSuitable = (offerSummary) =>    (roomsFilterElement.value ==='any') ||(`${offerSummary.offer.rooms}`===roomsFilterElement.value);
+const isTypeSuitable = (offerSummary) =>     (typeFilterElement.value ==='any')  ||(offerSummary.offer.type === typeFilterElement.value);
+const isCapacitySuitable = (offerSummary) => (guestsFilterElement.value ==='any')||(`${offerSummary.offer.guests  }` === guestsFilterElement.value);
 const isPriceSuitable = (offerSummary) =>
-  (priceFilter.value  ==='any')||
-(priceFilter.value === 'low' && offerSummary.offer.price <=LOW_PRICE_FILTER) ||
-(priceFilter.value === 'high' && offerSummary.offer.price >=HIGH_PRICE_FILTER)||
-(priceFilter.value === 'middle' && (offerSummary.offer.price >=LOW_PRICE_FILTER) && (offerSummary.offer.price <= HIGH_PRICE_FILTER));
+  (priceFilterElement.value  ==='any')||
+(priceFilterElement.value === 'low' && offerSummary.offer.price <=LOW_PRICE_FILTER) ||
+(priceFilterElement.value === 'high' && offerSummary.offer.price >=HIGH_PRICE_FILTER)||
+(priceFilterElement.value === 'middle' && (offerSummary.offer.price >=LOW_PRICE_FILTER) && (offerSummary.offer.price <= HIGH_PRICE_FILTER));
 //новая фильтрация, cFFL работает нормально
 const createFilterFeaturesList = () =>
 {
   const featuresList = [];
-  for (const key in features) {
-    if (features[key].checked === true){
+  for (const key in featuresElement) {
+    if (featuresElement[key].checked === true){
       featuresList.push(key);
     }
   }
@@ -64,7 +64,7 @@ const isOfferSuitable = (offerSummary) =>(( isRoomsSuitable(offerSummary))&&
 (isPriceSuitable(offerSummary))
 &&(areFeaturesSuitable(offerSummary.offer.features))
 );
-filters.addEventListener('input', () => getData());
+filtersElement.addEventListener('input', () => getData());
 
 export {
   isOfferSuitable
