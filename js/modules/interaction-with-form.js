@@ -19,7 +19,7 @@ const CapacityForRooms = {
 const bodyElement = document.querySelector('body');
 //___________________________Валидация____________
 
-const roomAmountElement = adFormElement.querySelector('#room_number'); //Эти объявления лучше оставить в функции или вынести?
+const roomAmountElement = adFormElement.querySelector('#room_number');
 const capacityElement   = adFormElement.querySelector('#capacity');
 const typeElement       = adFormElement.querySelector('#type');
 const priceElement      = adFormElement.querySelector('#price');
@@ -86,10 +86,6 @@ const validateOffer = () => {
   });
 };
 
-adFormElement.addEventListener('submit', () => {
-//
-});
-
 // Уведомления о (не)успешности отправки
 const  createSuccessPopup = () =>{
   const successPopupElement = document.querySelector('#success').content.cloneNode(true);
@@ -97,29 +93,29 @@ const  createSuccessPopup = () =>{
   adFormElement.reset();
   document.querySelector('map__filters').reset();
   document.addEventListener('keydown', (evt) =>{
-    if (evt.keyCode === 27) {
-      successPopupElement.remove();
+    if (evt.key === 27) {
+      document.remove((document.querySelector('success')));
     }
   });
   document.addEventListener('click', () =>{
-    successPopupElement.remove();
+    document.remove((document.querySelector('success')));
   });
 };
 
 const  createErrorPopup = () =>{
-  const errorPopupElement = document.querySelector('#success').content.cloneNode(true);
+  const errorPopupElement = document.querySelector('#error').content.cloneNode(true);
   bodyElement.appendChild(errorPopupElement);
   document.addEventListener('keydown', (evt) =>{
-    if (evt.keyCode === 27) {
-      errorPopupElement.remove();
+    if (evt.key === 27) {
+      (document.querySelector('error')).remove(document.querySelector('error'));
     }
   });
   document.addEventListener('click', () =>{
-    errorPopupElement.remove();
+    document.remove(document.querySelector('error'));
   });
   const closeButton = errorPopupElement.querySelector('.error__button');
   closeButton.addEventListener('click', () => {
-    errorPopupElement.remove();
+    (document.querySelector('error')).remove(document.querySelector('error'));
   });
 };
 

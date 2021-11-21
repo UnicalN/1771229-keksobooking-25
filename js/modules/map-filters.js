@@ -27,7 +27,7 @@ const isPriceSuitable = (offerSummary) =>
 (priceFilterElement.value === 'low' && offerSummary.offer.price <=LOW_PRICE_FILTER) ||
 (priceFilterElement.value === 'high' && offerSummary.offer.price >=HIGH_PRICE_FILTER)||
 (priceFilterElement.value === 'middle' && (offerSummary.offer.price >=LOW_PRICE_FILTER) && (offerSummary.offer.price <= HIGH_PRICE_FILTER));
-//новая фильтрация, cFFL работает нормально
+//фильтрация
 const createFilterFeaturesList = () =>
 {
   const featuresList = [];
@@ -42,7 +42,6 @@ const createFilterFeaturesList = () =>
 const areFeaturesSuitable = (offerFeatures) =>
 {
   const filterFeatures = createFilterFeaturesList();
-  //console.log(offerFeatures)
   if (filterFeatures===''){
     return true;
   }
