@@ -1,34 +1,31 @@
-// Блокировка/Разблокировка формы
-const adForm=document.querySelector('.ad-form');
-const mapFilters = document.querySelector('.map__filters');
-const disablePage = () => {
-  adForm.classList.add('ad-form--disabled');
-  mapFilters.classList.add('ad-form--disabled');
+const adFormElement=document.querySelector('.ad-form');
+const mapFiltersElement = document.querySelector('.map__filters');
 
-  for (const child of adForm.children){
-    child.setAttribute('disabled', true);
+const disablePage = () => {
+  adFormElement.classList.add('ad-form--disabled');
+  mapFiltersElement.classList.add('map__filters--disabled');
+
+  for (const childElement of adFormElement.children){
+    childElement.setAttribute('disabled', true);
   }
 
-  for (const child of mapFilters.children){
-    child.setAttribute('disabled', true);
+  for (const childElement of mapFiltersElement.children){
+    childElement.setAttribute('disabled', true);
   }
 };
+
 
 const enablePage = () => {
-  console.log('page enable attempt');
-  adForm.reset();
-  console.log(adForm.classList);
-  mapFilters.classList.remove('ad-form--disabled');
-  for (const child of adForm.children){
-    child.removeAttribute('disabled');
-    //console.log(child);
+  adFormElement.classList.remove('ad-form--disabled');
+  mapFiltersElement.classList.remove('map__filters--disabled');
+  for (const childElement of adFormElement.children){
+    childElement.removeAttribute('disabled');
   }
 
-  for (const child of mapFilters.children){
-    child.removeAttribute('disabled');
+  for (const childElement of mapFiltersElement.children){
+    childElement.removeAttribute('disabled');
   }
 };
-
 export {
   disablePage,
   enablePage

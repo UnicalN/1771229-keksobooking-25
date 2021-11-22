@@ -14,16 +14,15 @@ const PIN_ICON_URL = 'https://assets.htmlacademy.ru/content/intensive/javascript
 const TILE_LAYER = 'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png';
 const TILE_LAYER_ATTR = '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors | Icons made by <a href="https://www.freepik.com" title="Freepik">Freepik</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a>';
 
-const map = L.map('map')
-  .on('load', () => {
-    enablePage();
-  })
+const map = L.map('map-canvas').on('load', () => {
+  enablePage();
+})
   .setView({
     lat: DEFAULT_LAT,
     lng: DEFAULT_LNG,
   }, DEFAULT_SCALE);
 
-// графика карты
+
 L.tileLayer(
   TILE_LAYER,
   {
@@ -31,16 +30,17 @@ L.tileLayer(
   },
 ).addTo(map);
 
-// создание слоя
+
 const markerGroup = L.layerGroup().addTo(map);
 const selectLayer = L.layerGroup().addTo(map);
+const setDefaultAddress = () =>  setAddressFromLatLng(DEFAULT_LAT, DEFAULT_LNG);
 
 
-//добавление главного пина
 const createMainMarker = () => {
+  selectLayer.clearLayers();
   const lat =  DEFAULT_LAT;
   const lng =  DEFAULT_LNG;
-  setAddressFromLatLng(DEFAULT_LAT, DEFAULT_LNG);
+  setDefaultAddress();
   const icon = L.icon({
     iconUrl: MAIN_PIN_ICON_URL,
     iconSize: [SELECTOR_SIZE, SELECTOR_SIZE],
@@ -61,7 +61,7 @@ const createMainMarker = () => {
   marker
     .addTo(selectLayer);
 
-  // Отслеживание главного пина
+
   marker.addEventListener('moveend', (evt) =>
   {
     setAddressFromLatLng(evt.target._latlng.lat, evt.target._latlng.lng);
@@ -71,9 +71,6 @@ const createMainMarker = () => {
 };
 
 
-//eventListener placeholder --------------------------<<<
-
-// функция отрисовки значков+попапов на слое карты
 const createMarker = (offerSummary) => {
   const lat = offerSummary.location.lat;
   const lng = offerSummary.location.lng;
@@ -99,28 +96,31 @@ const createMarker = (offerSummary) => {
     .bindPopup(createOfferLayout(offerSummary));
 };
 
-//цикл отрисовки подходящих значков
+
 const updatePins = (data) =>{
   markerGroup.clearLayers();
-  let i=0;
+  let suitableOffersAmount=0;
   for (const offer of data) {
     if(isOfferSuitable(offer)){
       createMarker(offer);
-      i++;
+      suitableOffersAmount++;
     }
-    if (i>=MARKERS_AMOUNT){
+    if (suitableOffersAmount>=MARKERS_AMOUNT){
       break;
     }
   }
 };
+const resetMap = () =>
+{
 
-
-//доделать const createMarkersPlusEvtListener = (data)
-//filters.addEventListener;
-
-
+  map.setView({
+    lat: DEFAULT_LAT,
+    lng: DEFAULT_LNG,
+  }, DEFAULT_SCALE);
+  createMainMarker();
+};
 export {
   updatePins,
-  createMainMarker
+  resetMap
 };
 
