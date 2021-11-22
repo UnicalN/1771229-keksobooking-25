@@ -5,17 +5,17 @@ const TypeMap = {
   palace: 'Дворец',
   hotel: 'Отель',
 };
-const cardElement = document.querySelector('#card').content; //получение шаблона
+const cardElement = document.querySelector('#card').content;
 
 const removeEmptyElements = (removeFrom) => {
   for (const element in removeFrom){
-    if (element==='')                           //Если данных для заполнения не хватает,
-    {removeFrom[element].classList.add('hidden');} //  блок в карточке скрывается.
+    if (element==='')
+    {removeFrom[element].classList.add('hidden');}
   }
 };
 
 const createOfferLayout = (offerSummary) => {
-  const cardCloneElement = cardElement.cloneNode(true);             //создание клона шаблона
+  const cardCloneElement = cardElement.cloneNode(true);
   const popup = {
     title: cardCloneElement.querySelector('.popup__title'),
     address: cardCloneElement.querySelector('.popup__text--address'),
@@ -46,7 +46,7 @@ const createOfferLayout = (offerSummary) => {
       }
     }
   };
-  popup.title.textContent = offerSummary.offer.title;   //заполнение DOM-элемента
+  popup.title.textContent = offerSummary.offer.title;
   popup.address.textContent = offerSummary.offer.address;
   popup.price.textContent = (`${offerSummary.offer.price  } ₽/ночь`);
   popup.type.textContent = TypeMap[offerSummary.offer.type];

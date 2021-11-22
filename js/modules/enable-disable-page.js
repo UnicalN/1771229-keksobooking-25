@@ -1,9 +1,9 @@
-// Блокировка/Разблокировка формы
 const adFormElement=document.querySelector('.ad-form');
 const mapFiltersElement = document.querySelector('.map__filters');
+
 const disablePage = () => {
   adFormElement.classList.add('ad-form--disabled');
-  mapFiltersElement.classList.add('ad-form--disabled');
+  mapFiltersElement.classList.add('map__filters--disabled');
 
   for (const childElement of adFormElement.children){
     childElement.setAttribute('disabled', true);
@@ -13,10 +13,11 @@ const disablePage = () => {
     childElement.setAttribute('disabled', true);
   }
 };
+
 
 const enablePage = () => {
-  adFormElement.reset();
-  mapFiltersElement.classList.remove('ad-form--disabled');
+  adFormElement.classList.remove('ad-form--disabled');
+  mapFiltersElement.classList.remove('map__filters--disabled');
   for (const childElement of adFormElement.children){
     childElement.removeAttribute('disabled');
   }
@@ -25,7 +26,6 @@ const enablePage = () => {
     childElement.removeAttribute('disabled');
   }
 };
-
 export {
   disablePage,
   enablePage

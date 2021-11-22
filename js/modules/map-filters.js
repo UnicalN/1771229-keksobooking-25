@@ -2,6 +2,7 @@ import { getData } from './server-interfaces.js';
 
 const LOW_PRICE_FILTER = 10000;
 const HIGH_PRICE_FILTER = 50000;
+const RENDER_DELAY = 500;
 
 
 const filtersElement = document.querySelector('.map__filters');
@@ -9,15 +10,6 @@ const typeFilterElement = filtersElement.querySelector('#housing-type');
 const priceFilterElement = filtersElement.querySelector('#housing-price');
 const roomsFilterElement =filtersElement.querySelector('#housing-rooms');
 const guestsFilterElement = filtersElement.querySelector('#housing-guests');
-const featuresElement =
-{
-  wifi : (filtersElement.querySelector('#filter-wifi')),
-  dishwasher : (filtersElement.querySelector('#filter-dishwasher')),
-  parking : (filtersElement.querySelector('#filter-parking')),
-  washer : (filtersElement.querySelector('#filter-washer')),
-  elevator : (filtersElement.querySelector('#filter-elevator')),
-  conditioner : (filtersElement.querySelector('#filter-conditioner')),
-};
 
 const isRoomsSuitable = (offerSummary) =>    (roomsFilterElement.value ==='any') ||(`${offerSummary.offer.rooms}`===roomsFilterElement.value);
 const isTypeSuitable = (offerSummary) =>     (typeFilterElement.value ==='any')  ||(offerSummary.offer.type === typeFilterElement.value);
@@ -27,13 +19,15 @@ const isPriceSuitable = (offerSummary) =>
 (priceFilterElement.value === 'low' && offerSummary.offer.price <=LOW_PRICE_FILTER) ||
 (priceFilterElement.value === 'high' && offerSummary.offer.price >=HIGH_PRICE_FILTER)||
 (priceFilterElement.value === 'middle' && (offerSummary.offer.price >=LOW_PRICE_FILTER) && (offerSummary.offer.price <= HIGH_PRICE_FILTER));
-//фильтрация
+
+
 const createFilterFeaturesList = () =>
 {
   const featuresList = [];
-  for (const key in featuresElement) {
-    if (featuresElement[key].checked === true){
-      featuresList.push(key);
+  const featuresElements = document.querySelectorAll('.map__checkbox');
+  for (const featureElement of featuresElements) {
+    if (featureElement.checked === true){
+      featuresList.push(featureElement.value);
     }
   }
   return featuresList;
@@ -63,7 +57,7 @@ const isOfferSuitable = (offerSummary) =>(( isRoomsSuitable(offerSummary))&&
 (isPriceSuitable(offerSummary))
 &&(areFeaturesSuitable(offerSummary.offer.features))
 );
-filtersElement.addEventListener('input', () => getData());
+filtersElement.addEventListener('input', (_.debounce(() => getData(), RENDER_DELAY)));
 
 export {
   isOfferSuitable

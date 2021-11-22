@@ -1,5 +1,7 @@
-import {sendData} from './server-interfaces.js';
+import {getData, sendData} from './server-interfaces.js';
 import { roundTheNumber } from './mathematical.js';
+import { createSuccessPopup,  createErrorPopup} from './form-submit-messages.js';
+import { resetMap} from './map.js';
 const LOCATION_DIGITS_IN_ADDRESS = 5;
 const adFormElement=document.querySelector('.ad-form');
 const MinPriceForType = {
@@ -16,8 +18,6 @@ const CapacityForRooms = {
   100: [0],
 };
 
-const bodyElement = document.querySelector('body');
-//___________________________Валидация____________
 
 const roomAmountElement = adFormElement.querySelector('#room_number');
 const capacityElement   = adFormElement.querySelector('#capacity');
@@ -26,7 +26,7 @@ const priceElement      = adFormElement.querySelector('#price');
 const checkinElement    = adFormElement.querySelector('#timein');
 const checkoutElement   = adFormElement.querySelector('#timeout');
 const addressElement    = adFormElement.querySelector('#address');
-
+const adFormReset       = adFormElement.querySelector('.ad-form__reset');
 const setAddress = (newAddress) => {
   addressElement.value = newAddress;
 };
@@ -70,7 +70,6 @@ const setPriceForType = (theType, thePrice) => { // Заменяет placeholder
 };
 
 
-//EventListeners
 const validateOffer = () => {
   checkinElement.addEventListener('input', () => {
     setEqualTime(checkinElement, checkoutElement);
@@ -86,38 +85,17 @@ const validateOffer = () => {
   });
 };
 
-// Уведомления о (не)успешности отправки
-const  createSuccessPopup = () =>{
-  const successPopupElement = document.querySelector('#success').content.cloneNode(true);
-  bodyElement.appendChild(successPopupElement);
-  adFormElement.reset();
-  document.querySelector('map__filters').reset();
-  document.addEventListener('keydown', (evt) =>{
-    if (evt.key === 27) {
-      document.remove((document.querySelector('success')));
-    }
-  });
-  document.addEventListener('click', () =>{
-    document.remove((document.querySelector('success')));
-  });
+
+const filtersElement = document.querySelector('.map__filters');
+const clearFiltersAndForm = () => {
+  filtersElement.reset();
+  resetMap();
+  priceElement.placeholder =  MinPriceForType.flat;
+  getData();
 };
 
-const  createErrorPopup = () =>{
-  const errorPopupElement = document.querySelector('#error').content.cloneNode(true);
-  bodyElement.appendChild(errorPopupElement);
-  document.addEventListener('keydown', (evt) =>{
-    if (evt.key === 27) {
-      (document.querySelector('error')).remove(document.querySelector('error'));
-    }
-  });
-  document.addEventListener('click', () =>{
-    document.remove(document.querySelector('error'));
-  });
-  const closeButton = errorPopupElement.querySelector('.error__button');
-  closeButton.addEventListener('click', () => {
-    (document.querySelector('error')).remove(document.querySelector('error'));
-  });
-};
+adFormReset.addEventListener('click', clearFiltersAndForm);
+
 
 const setUserFormSubmit = () => {
   adFormElement.addEventListener('submit', (evt) => {
