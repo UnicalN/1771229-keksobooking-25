@@ -16,7 +16,6 @@ const TILE_LAYER_ATTR = '&copy; <a href="https://www.openstreetmap.org/copyright
 
 const map = L.map('map-canvas').on('load', () => {
   enablePage();
-  //getData();
 })
   .setView({
     lat: DEFAULT_LAT,
