@@ -1,5 +1,4 @@
-import { isOfferSuitable } from './map-filters.js';
-
+import {updatePins} from './map.js';
 const GET_DATA_FROM='https://24.javascript.pages.academy/keksobooking/data';
 const SEND_DATA_TO='https://24.javascript.pages.academy/keksobooking';
 const GET_DATA_ERROR_TEXT = 'Упс! Что-то пошло не так при загрузке предложений!';
@@ -15,7 +14,7 @@ const createGetDataError = () => {
   document.body.insertBefore(errorMessageElement, document.body.firstChild);
 };
 
-const getData = (cb) => {
+const getData = () => {
   fetch(GET_DATA_FROM)
     .then((response) => {
       if (response.ok) {
@@ -25,7 +24,7 @@ const getData = (cb) => {
     })
     .then((response) => response.json())
     .then((offers) => {
-      cb(offers, isOfferSuitable);
+      updatePins(offers);
     });
 };
 

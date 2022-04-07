@@ -1,7 +1,7 @@
 import {getData, sendData} from './server-interfaces.js';
 import { roundTheNumber } from './mathematical.js';
 import { createSuccessPopup,  createErrorPopup} from './form-submit-messages.js';
-import { resetMap, updatePins} from './map.js';
+import { resetMap} from './map.js';
 const LOCATION_DIGITS_IN_ADDRESS = 5;
 const adFormElement=document.querySelector('.ad-form');
 const MinPriceForType = {
@@ -35,14 +35,14 @@ const setAddressFromLatLng = (lat, lng) => {
   setAddress(`${roundTheNumber(lat, LOCATION_DIGITS_IN_ADDRESS)  }, ${  roundTheNumber(lng, LOCATION_DIGITS_IN_ADDRESS)}`);
 };
 
-const setCapacityForRooms = (theRoomAmount, theCapacityElement)=>{
+const setCapacityForRooms = (theRoomAmount, theCapacity)=>{
   if (theRoomAmount.value==='100'){
-    theCapacityElement.value = '0';
+    theCapacity.value = '0';
   }
   else {
-    theCapacityElement.value = '1';
+    theCapacity.value = '1';
   }
-  for (const option of theCapacityElement.children){
+  for (const option of theCapacity.children){
     option.disabled = true;
     for (const possibleCapacity of CapacityForRooms[theRoomAmount.value]){
       if ((option.value - possibleCapacity) === 0){
@@ -53,8 +53,8 @@ const setCapacityForRooms = (theRoomAmount, theCapacityElement)=>{
 };
 
 
-const setEqualTime = (userSetTime, syncTimeElement) => {
-  for (const childElement of syncTimeElement.children)
+const setEqualTime = (userSetTime, syncTime) => {
+  for (const childElement of syncTime.children)
   {
     childElement.selected = false;
     if (childElement.value === userSetTime.value)
@@ -91,7 +91,7 @@ const clearFiltersAndForm = () => {
   filtersElement.reset();
   resetMap();
   priceElement.placeholder =  MinPriceForType.flat;
-  getData(updatePins);
+  getData();
 };
 
 adFormReset.addEventListener('click', clearFiltersAndForm);
