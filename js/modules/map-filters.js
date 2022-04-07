@@ -62,3 +62,4 @@ filtersElement.addEventListener('input', (_.debounce(() => getData(), RENDER_DEL
 export {
   isOfferSuitable
 };
+
