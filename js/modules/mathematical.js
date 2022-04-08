@@ -3,3 +3,4 @@ const roundTheNumber = (number, digits) => (Math.round(number*Math.pow(10, digit
 export {
   roundTheNumber
 };
+
